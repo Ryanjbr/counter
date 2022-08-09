@@ -5,6 +5,7 @@ let onesValue = 0;
 const hundreds = document.querySelector('.hundreds')
 const tens = document.querySelector('.tens')
 const ones = document.querySelector('.ones')
+const reset = document.querySelector('.reset')
 const buttons = document.querySelectorAll('button')
 
 
@@ -29,8 +30,15 @@ minusone.addEventListener('click', () => {
     counter -= 1;
 })
 
+reset.addEventListener('click', () => {
+    counter = 0;
+})
+
 for (let button of buttons) {
     button.addEventListener('click', () => {
+        if (counter < 0) {
+            counter = 0;
+        }
         onesValue = counter % 10;
         tensValue = Math.floor(counter % 100 / 10);
         hundredsValue = Math.floor(counter / 100);
